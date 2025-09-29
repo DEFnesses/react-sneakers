@@ -1,4 +1,4 @@
-function Drawer({ onClose, items = [] }) {
+function Drawer({ onClose, onRemove, items = [] }) {
   return (
     <div className="overlay">
       <div className="drawer">
@@ -12,22 +12,48 @@ function Drawer({ onClose, items = [] }) {
           />
         </h2>
 
-        <div className="items">
-          {items.map((obj) => (
-            <div className="cartItem d-flex align-center mb-20">
-              <div
-                style={{ backgroundImage: `url(${obj.imageUrl})` }}
-                className="cartItemImg"
-              ></div>
+        {items.length > 0 ? (
+          <div className="items">
+            {items.map((obj) => (
+              <div className="cartItem d-flex align-center mb-20">
+                <div
+                  style={{ backgroundImage: `url(${obj.imageUrl})` }}
+                  className="cartItemImg"
+                ></div>
 
-              <div className="mr-20 flex">
-                <p className="mb-5">{obj.title}</p>
-                <b>{obj.price} руб.</b>
+                <div className="mr-20 flex">
+                  <p className="mb-5">{obj.title}</p>
+                  <b>{obj.price} руб.</b>
+                </div>
+                <img
+                  onClick={() => onRemove(obj.id)}
+                  className="removeBtn"
+                  src="/img/btn-remove.svg"
+                  alt=""
+                />
               </div>
-              <img className="removeBtn" src="/img/btn-remove.svg" alt="" />
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        ) : (
+          <div className="cartEmpty d-flex align-center justify-center flex-column flex">
+            <img
+              className="mb-20"
+              width="120px"
+              height="120px"
+              src="/img/box.svg"
+              alt="Box"
+            />
+            <h2>Корзина пустая</h2>
+            <p className="opacity-6">
+              Добавьте хотябы одну пару кроссовок, чтобы сделать заказ.
+            </p>
+            <button className="greenButton">
+              <img src="/img/arrow.svg" alt="Arrow" />
+              Вернуться назад
+            </button>
+          </div>
+        )}
+
         <div className="cartTotalBlock">
           <ul>
             <li>

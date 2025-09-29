@@ -1,13 +1,13 @@
 body {
   margin: 0;
-  font-family: "Inter", system-ui;
+  font-family: "Overpass", system-ui;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #e7f6ff;
 }
 
 * {
-  font-family: "Inter", system-ui;
+  font-family: "Overpass", system-ui;
 }
 
 code {
@@ -92,12 +92,37 @@ header {
     margin-bottom: 40px;
   }
 
-
   h2 {
     margin: 0;
   }
 }
 
+.cartEmpty {
+  text-align: center;
+
+  p {
+    width: 280px;
+    line-height: 24px;
+  }
+
+  .greenButton {
+    width: 245px;
+    margin-top: 20px;
+
+    &:hover {
+      img {
+        transform: rotate(180deg) translateX(3px);
+      }
+    }
+    img {
+      position: relative;
+      top: 1px;
+      transform: rotate(180deg);
+      margin-right: 15px;
+      transition: transform 0.15s ease-in-out;
+    }
+  }
+}
 
 .cartTotalBlock {
   ul {
